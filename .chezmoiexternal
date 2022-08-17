@@ -1,0 +1,5 @@
+[".vim/pack/plugins/opt/chezmoi.vim"]
+    type = "archive"
+    url = "https://github.com/alker0/chezmoi.vim/archive/main.tar.gz"
+    exact = true
+    stripComponents = 1

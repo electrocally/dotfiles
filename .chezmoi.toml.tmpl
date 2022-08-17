@@ -1,0 +1,41 @@
+# Used to customize configuration when doing a `chezmoi init`.
+#
+# This template file will trigger prompts to fill-in machine-specific
+# templateable values. The resulting file is then created at
+# `~/.config/chezmoi/chezmoi.toml`
+# See https://www.chezmoi.io/docs/how-to/
+
+{{- $email          := "" -}}
+{{- $github_email   := "" -}}
+{{- $name           := "" -}}
+{{- $gpg_signingkey := "" -}}
+
+{{- if (hasKey . "email") -}}
+{{-   $email = .email -}}
+{{- else -}}
+{{-   $email = promptString "email" -}}
+{{- end -}}
+
+{{- if (hasKey . "github_email") -}}
+{{-   $github_email = .github_email -}}
+{{- else -}}
+{{-   $github_email = promptString "github_email" -}}
+{{- end -}}
+
+{{- if (hasKey . "name") -}}
+{{-   $name = .name -}}
+{{- else -}}
+{{-   $name = promptString "name" -}}
+{{- end -}}
+
+{{- if (hasKey . "gpg_signingkey") -}}
+{{-   $gpg_signingkey = .gpg_signingkey -}}
+{{- else  -}}
+{{-   $gpg_signingkey = promptString "GPG signing key" -}}
+{{- end }}
+
+[data]
+    email           = {{ $email | quote }}
+    github_email    = {{ $github_email | quote }}
+    name            = {{ $name | quote }}
+    gpg_signingkey  = {{ $gpg_signingkey | quote }}

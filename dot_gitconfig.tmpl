@@ -1,0 +1,103 @@
+{{- if (ne .gpg_signingkey "") -}}
+[commit]
+    gpgsign = true
+{{- end -}}
+
+
+[core]
+  abbrev = 12
+  attributesfile = "~/.gitattributes"
+  autocrlf = false
+  editor = "vim"
+  eol = "lf"
+  excludesfile = "~/.gitignore"
+  excludesfile = "~/.gitignore"
+  fileMode = false
+  pager = "delta"
+
+[include]
+  path = ~/.gitconfig.colors
+
+[delta]
+  navigate = true # use n and N to move between diff sections
+  side-by-side = true
+  line-numbers = true
+  features = "decorations"
+
+[delta "interactive"]
+  keep-plus-minus-markers = false
+
+[delta "decorations"]
+  commit-decoration-style = blue ol
+  commit-style = raw
+  file-style = omit
+  hunk-header-decoration-style = blue box
+  hunk-header-file-style = red
+  hunk-header-line-number-style = "#067a00"
+  hunk-header-style = file line-number syntax
+
+[diff "bin"]
+# Use `hexdump` to diff binary files.
+  textconv = hexdump -v -C
+
+[filter "lfs"]
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-proces
+
+[interactive]
+  diffFilter = delta --color-only --features = interactive
+
+[pager]
+  diff   = delta
+  log    = delta
+  reflog = delta
+  show   = delta
+
+[pretty]
+  custom = "%C(magenta)%h%C(red)%d %C(yellow)%ar %C(green)%s %C(yellow)(%an)"
+#                     │        │            │            │             └─ author name
+#                     │        │            │            └─ message
+#                     │        │            └─ date (relative)
+#                     │        └─ decorations (branch, heads or tags)
+#                     └─ hash (abbreviated)
+
+[user]
+  email          = "{{- .email -}}"
+  name           = "{{- .name -}}"
+{{- if (ne .gpg_signingkey "") -}}
+  gpg_signingkey = "{{- .gpg_signingkey -}}"
+{{- end  }}
+  useConfigOnly  = true
+
+# Split Protocol Config
+## GitHub
+[url "git@github.com:"]
+	pushInsteadOf = https://github.com/
+[url "https://github.com/"]
+  insteadOf = git@github.com:
+
+## GitLab
+[url "git@gitlab.com:"]
+  pushInsteadOf = https://gitlab.com
+[url "https://gitlab.com/"]
+  insteadOf = git@gitlab.com:
+
+[branch "master"]
+  remote = origin
+  merge  = refs/heads/master
+  rebase = true
+
+[branch "main"]
+  remote = origin
+  merge  = refs/heads/main
+  rebase = true
+
+[init]
+  defaultBranch = main
+[push]
+  default = current
+[pull]
+  default = current
+

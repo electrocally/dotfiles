@@ -1,0 +1,86 @@
+add_newline     = true
+command_timeout = 1000
+
+format = """
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$hg_branch\
+$kubernetes\
+$aws\
+$all
+"""
+
+[git_status]
+style = "bold #ff5555"
+
+[hostname]
+style = "bold #ff5555"
+
+[aws]
+disabled = false
+style  = "bold #FFAC31"
+format = "on[ ☁️  $profile ]($style)"
+
+[battery]
+charging_symbol    = "⚡️ "
+discharging_symbol = "☠️  "
+full_symbol        = "🔋 "
+unknown_symbol     = "🤨 "
+
+[[battery.display]]
+threshold = 15
+style     = "bold red"
+
+[[battery.display]]
+threshold = 30
+style     = "bold yellow"
+
+[character]
+success_symbol = "[➜](bold green)" 
+error_symbol   = "[➜](bold red)"
+
+[cmd_duration]
+min_time = 5000
+style = "bold #f1fa8c"
+
+[directory]
+truncation_length = 6
+truncate_to_repo  = true
+style             = "bold #50fa7b"
+
+[docker_context]
+format = "via[ 🐳 $context ](bold blue)"
+
+[git_branch]
+style = "bold #ff79c6"
+format = "•[ $symbol$branch ]($style)"
+
+[helm]
+disabled = false
+format = "via[ ⎈$version ](bold white)"
+
+[kubernetes]
+disabled = false
+format = 'on[ ☸️  $context \($namespace\) ](bold cyan)'
+
+[nim]
+format = "via[ 👑 $version ]($style)"
+
+[python]
+symbol             = "🐍 "
+style              = "green"
+python_binary      = ["python3"]
+pyenv_version_name = true
+
+[username]
+disabled = true
+
+[shell]
+disabled = true
+
+[terraform]
+format = 'via[ ⬢ $version \($workspace\) ]($style)'
