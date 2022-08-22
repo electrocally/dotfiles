@@ -28,11 +28,11 @@ end
 thefuck --alias | source
 
 # pnpm
-set -gx PNPM_HOME "/Users/calumdaines/Library/pnpm"
+set -gx PNPM_HOME "/Users/(whoami)/Library/pnpm"
 set -gx PATH "$PNPM_HOME" $PATH
 # pnpm end
 
 # bun
-set -Ux BUN_INSTALL "/Users/calumdaines/.bun"
-fish_add_path "/Users/calumdaines/.bun/bin"
+set -Ux BUN_INSTALL "/Users/(whoami)/.bun"
+fish_add_path "/Users/(whoami)/.bun/bin"
 
