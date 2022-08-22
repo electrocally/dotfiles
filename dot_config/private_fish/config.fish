@@ -25,14 +25,14 @@ if status is-interactive
   set -Ux EXA_STANDARD_OPTIONS --no-user --git --group-directories-first --icons --long -all
   set -g SSH_AUTH_SOCK /Users/(whoami)/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
 end
-
 thefuck --alias | source
 
 # pnpm
-set -gx PNPM_HOME "$HOME/Library/pnpm"
+set -gx PNPM_HOME "/Users/calumdaines/Library/pnpm"
 set -gx PATH "$PNPM_HOME" $PATH
 # pnpm end
 
 # bun
-set -Ux BUN_INSTALL "$HOME/.bun"
-fish_add_path "$HOME/.bun/bin"
+set -Ux BUN_INSTALL "/Users/calumdaines/.bun"
+fish_add_path "/Users/calumdaines/.bun/bin"
+
