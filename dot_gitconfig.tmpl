@@ -1,7 +1,7 @@
 {{- if (ne .gpg_signingkey "") -}}
 [commit]
     gpgsign = true
-{{- end -}}
+{{- end }}
 
 
 [core]
@@ -66,8 +66,8 @@
 [user]
   email          = "{{- .email -}}"
   name           = "{{- .name -}}"
-{{- if (ne .gpg_signingkey "") -}}
-  gpg_signingkey = "{{- .gpg_signingkey -}}"
+{{- if (ne .gpg_signingkey "") }}
+  signingkey = "{{- .gpg_signingkey -}}"
 {{- end  }}
   useConfigOnly  = true
 
