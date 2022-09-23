@@ -1,0 +1,23 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+
+# Setup Brew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew bundle --no-lock --file=~/Development/System/Brewfile
+
+# Configure Fish and set as default shell
+echo $(which fish) | sudo tee -a /etc/shells
+chsh -s $(which fish)
+
+# Add Fisher (shell plugin manager)
+curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+
+# Add Brew to Fish path
+fish -c 'set -U fish_user_paths /opt/homebrew/bin $fish_user_paths'
+fish -c 'set -Ux EXA_STANDARD_OPTIONS --no-user --git --group-directories-first --icons --long --all'
+fish -c 'fisher update'
+
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+{{ end -}}

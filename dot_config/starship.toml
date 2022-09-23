@@ -1,0 +1,89 @@
+# Starship Config
+add_newline     = true
+command_timeout = 1000
+
+format = """
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$hg_branch\
+$kubernetes\
+$aws\
+$all
+"""
+
+# System
+[battery]
+charging_symbol    = "⚡️ "
+discharging_symbol = "☠️ "
+full_symbol        = "🔋 "
+unknown_symbol     = "🤨 "
+
+[[battery.display]]
+threshold = 30
+style     = "bold yellow"
+
+[[battery.display]]
+threshold = 15
+style     = "bold red"
+
+[character]
+success_symbol = "[➜](bold green)" 
+error_symbol   = "[➜](bold red)"
+
+[cmd_duration]
+min_time = 5000
+style    = "bold #F1FA8C"
+
+[directory]
+truncation_length = 6
+truncate_to_repo  = true
+style             = "bold #50FA7B"
+
+[git_status]
+style = "bold #ff5555"
+
+[hostname]
+style = "bold #ff5555"
+
+[shell]
+disabled = true
+
+[username]
+disabled = true
+
+
+# Plugins
+[aws]
+style  = "bold #FFAC31"
+format = "on[ ☁️  $profile ]($style)"
+
+[docker_context]
+format = "via[ 🐳 $context ](bold blue)"
+
+[git_branch]
+style  = "bold #FF79C6"
+format = "•[ $symbol$branch ]($style)"
+
+[helm]
+disabled = false
+format   = "via[ ⎈$version ](bold white)"
+
+[kubernetes]
+disabled       = false
+format         = 'on[ ☸️  $context \($namespace\) ](bold #19E3D9)'
+
+# Languages
+[nim]
+format = 'via[ 👑 $version ](bold #FFE953)'
+
+[python]
+format             = 'via[ 🐍 $version ](bold #33FFBE)'
+python_binary      = ["python3"]
+pyenv_version_name = true
+
+[terraform]
+format = 'via[ ⬢ $version \($workspace\) ]($style)'

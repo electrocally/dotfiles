@@ -1,0 +1,9 @@
+{
+  "legacyEditor": false,
+  "spellcheck": true,
+  "livePreview": false,
+  "alwaysUpdateLinks": true,
+  "readableLineLength": false,
+  "showFrontmatter": true,
+  "promptDelete": false
+}

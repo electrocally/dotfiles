@@ -1,0 +1,11 @@
+{
+  "cmenu-plugin:hide-show-menu": [
+    {
+      "modifiers": [
+        "Ctrl",
+        "Mod"
+      ],
+      "key": "C"
+    }
+  ]
+}
